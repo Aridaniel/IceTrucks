@@ -12,6 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <div>
           <h1>This shall be our frontpage</h1>
+          <h2>Testing 123</h2>
         </div>
       </main>
 

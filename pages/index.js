@@ -13,6 +13,7 @@ export default function Home() {
         <div>
           <h1>This shall be our frontpage</h1>
           <h2>Testing 123</h2>
+          <h2>stuff</h2>
         </div>
       </main>
 

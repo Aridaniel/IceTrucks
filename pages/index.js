@@ -12,16 +12,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.container}>
-        <h1>This shall be our frontpage</h1>
-        <h3>Map:</h3>
-        <div className={styles.map}>
-          <WrappedMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_MAP_KEY}`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `100%` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          />
-        </div>
+       
+        <Map/>
       </main>
     </div>
   );

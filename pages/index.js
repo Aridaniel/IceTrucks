@@ -1,28 +1,28 @@
 import Head from 'next/head'
+import Map from '../components/Map'
+import WrappedMap from '../components/Map';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div >
       <Head>
         <title>Food Trucks Frontpage</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>
-        <div>
-          <h1>This shall be our frontpage</h1>
-          <h2>TMonkeyyyyyyyyyyy</h2>
-          <img
-            src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.CtxvGcKx6DIzDdajZKJKsgHaEK%26pid%3DApi&f=1'
-            alt=''
+      <main className={styles.container}>
+        <h1>This shall be our frontpage</h1>
+        <h3>Map:</h3>
+        <div className={styles.map}>
+          <WrappedMap
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_MAP_KEY}`}
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `100%` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
           />
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <p>Osom</p>
-      </footer>
     </div>
   );
 }

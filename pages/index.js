@@ -12,7 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <div>
           <h1>This shall be our frontpage</h1>
-          <h2>Testing 123</h2>
+          <h2>TMonkeyyyyyyyyyyy</h2>
           <img
             src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.CtxvGcKx6DIzDdajZKJKsgHaEK%26pid%3DApi&f=1'
             alt=''

@@ -1,9 +1,9 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import Map from '../components/Map';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+import Header from '../components/Header';
 
 export default function Home() {
-  
 
   return (
     <div >
@@ -13,8 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.container}>
-        <h1>This shall be our frontpage</h1>
-        <h3>Map:</h3>
+        <Header />
         <div className={styles.mapWrapper}>
           <Map />
         </div>        

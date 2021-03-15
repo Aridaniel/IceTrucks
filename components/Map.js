@@ -10,7 +10,7 @@ export default function Map() {
   const [markers, setMarkers] = useState(tmpCars);
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_KEY,
-    // Enable libraries such as places to use them.
+    // Enable libraries here such as places to use them.
   });
 
   const handleMapClick = useCallback((event) => {

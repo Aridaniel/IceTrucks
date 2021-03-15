@@ -1,0 +1,16 @@
+.header {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 0.5fr;
+  align-items: center;
+  height: 4rem;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.2);
+  z-index: 10;
+}
+
+.truckSearch {
+  border-style: none;
+  padding: 0.3rem;
+  border-radius: 4px;
+}

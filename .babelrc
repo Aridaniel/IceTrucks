@@ -1,3 +1,4 @@
+// This let jest pickup and understand how to compile the code based on a next.js app
 {
   "presets": ["next/babel"]
 }

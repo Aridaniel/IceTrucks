@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react"
+import React, { useState, useEffect, useCallback, useRef } from "react"
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 import tmpCars from '../resources/tmpCars';
 import mapStyles from '../resources/mapStyles';
@@ -12,6 +12,17 @@ export default function Map() {
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_KEY,
     // Enable libraries here such as places to use them.
   });
+
+  useEffect( async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/truck');
+      const data = await response.json();
+      // setAllTrucks(data)
+      console.log('data: ', data.data[0].location);
+    } catch(error) {
+      console.log('Error: ', error);
+    }
+  }, [])
 
   const handleMapClick = useCallback((event) => {
     console.log(event);

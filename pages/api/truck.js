@@ -26,6 +26,10 @@ const handler = async (req, res) => {
       } else {
         res.status(422).send('data_incomplete');
       }
+  } else if(req.method === 'GET') {
+    const data = await Truck.find({});
+
+    res.status(200).send({'data': data});
   } else {
     res.status(422).send('req_method_not_supported');
   }

@@ -1,15 +1,13 @@
 import connectDB from '../../middleware/mongodb';
 import Truck from '../../schemas/truck';
 
-// ToDo: Check if user is authenticated via authenticatio header where id token is passed in order to allow post
+// ToDo: Check if user is authenticated via authentication header where id token is passed in order to allow post
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    // Check if name, email or password is provided
     const { name, email, phone, menu, description, location, tags } = req.body;
+    // Check if name, email, phone, description or tags are provided
     if (name && email && phone && description && tags) {
         try {
-          // Hash password to store it in DB
-          // var passwordhash = await bcrypt.sign(password);
           let truck = new Truck({
             name,
             email,
@@ -37,6 +35,3 @@ const handler = async (req, res) => {
 }
 
 export default connectDB(handler);
-// export default (req, res) => {
-//   res.status(200).json({ name: 'TRUUUCKS' })
-// }

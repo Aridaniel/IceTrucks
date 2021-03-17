@@ -1,6 +1,7 @@
 import connectDB from '../../middleware/mongodb';
 import Truck from '../../schemas/truck';
 
+// ToDo: Check if user is authenticated via authenticatio header where id token is passed in order to allow post
 const handler = async (req, res) => {
   if (req.method === 'POST') {
     // Check if name, email or password is provided

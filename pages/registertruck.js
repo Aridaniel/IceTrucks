@@ -143,7 +143,7 @@ function registertruck() {
               <button className={styles.tagBtn} onClick={clickTag}>Burrito</button>
             </div>
 
-            <button className={styles.submitBtn} type="submit" onClick={clickSubmit}>Submit</button>
+            <button className={styles.submitBtn} type="submit" >Submit</button>
 
                 
                 

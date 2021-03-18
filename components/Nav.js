@@ -73,12 +73,12 @@ export default function Nav({ modalIsOpen, setIsOpen }) {
             </button>
           </div>
           <div className={styles.navText}>
-            <Link href='/allfoodtrucks'>
+            <Link href='/alltrucks'>
               <a>
                 <h1>All Food Trucks</h1>
               </a>
             </Link>
-            <Link href='/'>
+            <Link href='/registertruck'>
               <a>
                 <h1>Register Food Truck</h1>
               </a>

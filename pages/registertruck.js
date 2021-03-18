@@ -1,26 +1,25 @@
 import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image'
-import styles from '../styles/allFoodTrucks.module.css';
+import styles from '../styles/registertruck.module.css';
 
 import { useRouter } from 'next/router'
 
-function allFoodTrucks({truckin}) {
+function registertruck() {
 
   const router = useRouter()
- /*  const contentType = 'application/json'
+ /*   const contentType = 'application/json'
   const [errors, setErrors] = useState({})
   const [message, setMessage] = useState('')
+ */
+ /* const [form, setForm] = useState({
+   truckname = '',
+   email: '',
+   phone:'',
+   description:'',
+    location: '',
 
- const [form, setForm] = useState({
-   image_url=truckin.image_url,
-   truckname = truckin.name,
-   email: truckin.email,
-   phone:truckin.phone,
-   description:truckin.description,
-    location: truckin.location,
-
- }) */
+ })  */
 
  
   /* The POST method adds a new entry in the mongodb database. */
@@ -51,17 +50,31 @@ function allFoodTrucks({truckin}) {
 
   const handleChange = (e)=>{
     const value = e.target.value
-
-    console.log(value)
+     console.log(value)
+     /* setForm({...form, [name]: value,}) */
+    
   }
 
   const clickTag = ()=>{
     console.log('Clikced the TAgs')
   }
 
-  const handleSubmit =()=>{
+  const handleSubmit =(e)=>{
+    /* e.preventDefault() 
+      postData()
+      */
     console.log('suuuubmittted')
   }
+
+   /* Makes sure pet info is filled for pet name, owner name, species, and image url*/
+ /*   const formValidate = () => {
+    let err = {}
+    if (!form.truckname) err.truckname = 'Name is required'
+    if (!form.email) err.email = 'Owner is required'
+    if (!form.species) err.species = 'Species is required'
+    if (!form.image_url) err.image_url = 'Image URL is required'
+    return err
+  } */
 
     return (
       <div className={styles.truckForm}>
@@ -72,21 +85,21 @@ function allFoodTrucks({truckin}) {
 
             <h1 className={styles.title}>The Trucks Info</h1>
             <Image src='/addphoto.svg'  width='200' height='200'></Image>
-            <input 
+            {/* <input 
               name='image_url' 
               
               onChange={handleChange} 
               type='text'  
               placeholder='image_url'
               >
-              </input>
+              </input> */}
             <input 
               name='truckname' 
-              
               maxLength='20' 
               onChange={handleChange} 
               type='text'  
               placeholder='Food Trucks name'
+              required
               >
               </input>
             <input 
@@ -96,11 +109,11 @@ function allFoodTrucks({truckin}) {
               onChange={handleChange} 
               type='text' 
               placeholder='Contact´s Email'
+              required
               >
               </input>
             <input 
               name='phone'
-              
               maxLength='10' 
               onChange={handleChange} 
               type='text' 
@@ -109,11 +122,11 @@ function allFoodTrucks({truckin}) {
             </input>
             <input 
               name='description'
-              
               maxLength='45' 
               onChange={handleChange} 
               type='text' 
               placeholder='Trucks Description'
+              required
             ></input>
             <input 
               name='location'
@@ -141,4 +154,4 @@ function allFoodTrucks({truckin}) {
     );
 }
 
-export default allFoodTrucks
+export default registertruck

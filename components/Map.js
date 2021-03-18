@@ -20,6 +20,7 @@ export default function Map() {
       const response = await fetch('http://localhost:3000/api/truck');
       const data = await response.json();
       setTrucks(data.data)
+      console.log(data.data)
     } catch(error) {
       console.log('Error: ', error);
     }
@@ -65,7 +66,16 @@ export default function Map() {
     <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center} options={options} onLoad={onMapLoad} onClick={handleMapClick}>
       {/* To change the marker style add the icon property to the Marker component in the map function (create a svg and control the size) */}
       {/* {markers.map((marker, index) => <Marker key={index} position={{lat: marker.lat, lng: marker.lng}} icon={{url: '/redMarker.svg'}}/>)} */}
-      {trucks.map((truck, index) => <Marker key={truck._id} position={{lat: parseFloat(truck.location.lat), lng: parseFloat(truck.location.lng)}} onClick={() => handleTruckClick(truck)} icon={{url: '/redMarker.svg'}} />)}
+      {trucks.map((truck, index) => {
+        const pos = typeof truck.location === 'object' ? {lat:parseFloat(truck.location.lat),lng:parseFloat(truck.location.lng)} : {lat: 50, lng:-18}
+        return <Marker 
+          key={truck._id} 
+          position={pos} 
+          onClick={() => handleTruckClick(truck)} 
+          icon={{url: '/redMarker.svg'}} 
+          />
+      })
+      }
       {selected ? (
         // ToDo: Style the InfoWindow or maybe create our own modal
         <InfoWindow position={{lat:parseFloat(selected.location.lat), lng: parseFloat(selected.location.lng)}} onCloseClick={() => setSelected(null)}>

@@ -12,7 +12,7 @@ let truck = new Schema({
   },
   phone: {
     type: Number,
-    required: true
+    required: false
   },
   menu: {
     type: String,
@@ -26,10 +26,10 @@ let truck = new Schema({
     type: Object,
     required: false
   },
-  tags: {
+  /* tags: {
     type: Array,
     required: true
-  }
+  } */
 });
 
 mongoose.models = {};

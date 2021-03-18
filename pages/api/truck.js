@@ -4,9 +4,10 @@ import Truck from '../../schemas/truck';
 // ToDo: Check if user is authenticated via authentication header where id token is passed in order to allow post
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { name, email, phone, menu, description, location, tags } = req.body;
-    // Check if name, email, phone, description or tags are provided
-    if (name && email && phone && description && tags) {
+    console.log('body:' , req.body)
+    const { name, email, phone, menu, description, location, /* tags */ } = req.body;
+    // Check if name, email, phone, description or /* tags */ are provided
+    if (name && email && phone && description/* && tags */) {
         try {
           let truck = new Truck({
             name,
@@ -15,12 +16,12 @@ const handler = async (req, res) => {
             menu: menu !== null ? menu : 'No menu yet',
             description,
             location,
-            tags
+            /* tags */
           });
           let createdTruck = await truck.save();
           return res.status(200).send(createdTruck);
         } catch (error) {
-          return res.status(500).send(error.message);
+          return res.status(500).send({message:error.message});
         }
       } else {
         res.status(422).send('data_incomplete');

@@ -26,10 +26,10 @@ let truck = new Schema({
     type: Object,
     required: false
   },
-  /* tags: {
+  tags: {
     type: Array,
     required: true
-  } */
+  }
 });
 
 mongoose.models = {};

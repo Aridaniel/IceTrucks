@@ -1,0 +1,9 @@
+.tagBtn {
+  text-align: center;
+  background-color: rgb(91, 91, 89);
+  color: white;
+  width: 4rem;
+  border-radius: 7px;
+  margin: 0.5rem 0.5rem;
+  padding: 0.2rem 0.5rem;
+}

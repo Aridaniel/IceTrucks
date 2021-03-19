@@ -1,17 +1,17 @@
-.truckForm{
+.truckForm  {
     background-color: rgb(44, 44, 44);
     display: flex;
     justify-content: center;   
     height: 100vh;
 }
-.title{
+.title {
     color: white;
-   font-size: 24px;
-   display: flex;
-   justify-content:center;
-   align-items: center;
+    font-size: 24px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
 }
-.form{
+.form {
     margin-bottom: 1rem;
     /* background-color: rgb(153, 149, 149); */  
     display: grid;
@@ -19,38 +19,21 @@
  */    grid-row-gap: 0.7rem; 
     width: 65%; 
 }
-div .form input{
 
+div .form input {
     border-radius: 8px;
     padding-left: 0.5rem;  
 }
 
-.selectTagsTitle{
+.selectTagsTitle {
     color: white;
     font-size: medium;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.tagsBtn{
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   grid-gap: 1rem;
-
-
-}
-
-.tagBtn{
-    background-color: rgb(91, 91, 89);
-    color: white;
-    width: 4rem;
-    border-radius: 7px;
-    display: grid;
-    
-    
-}
-
-.submitBtn{
+.submitBtn {
     border-radius: 7px;
     background-color: rgb(200, 49, 35);
     color:white;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from "react"
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api'
+import TagList from '../components/TagList'
 // import tmpCars from '../resources/tmpCars';
 import mapStyles from '../resources/mapStyles';
-
+const libraries = ["places"];
 // In order to allow truck owners to mark their location we need to use geolocation to use the current location of the browser OR
 // use-places-autocomplete in order to be able to select an address (possibly)
 
@@ -12,6 +13,7 @@ export default function Map() {
   const [selected, setSelected] = useState(null);
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_KEY,
+    libraries,
     // Enable libraries here such as places to use them.
   });
 
@@ -82,6 +84,7 @@ export default function Map() {
           <div>
             <h2>{selected.name}</h2>
             <p>{selected.description}</p>
+            {selected.tags.length ? <TagList tags={selected.tags} /> : null}
           </div>
         </InfoWindow>) : null}
     </GoogleMap>

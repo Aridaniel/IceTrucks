@@ -1,19 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocomplete';
+import { useLoadScript } from '@react-google-maps/api'
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from '@reach/combobox'
 import "@reach/combobox/styles.css";
 import styles from '../styles/Search.module.css'
 
 export default function Search({setChosenLocation}) {
+  const [mapsLoaded, setMapsLoaded] = useState(false)
+  const {isLoaded, loadError} = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_KEY,
+    libraries: ["places"],
+    // Enable libraries here such as places to use them.
+  });
+  
   // ready: is the package ready to go, value: current value user has typed in the search field, suggestions: what data we get suggested form googles api
-  const {ready, value, suggestions: {status, data}, setValue, clearSuggestions} = usePlacesAutocomplete({
+  const {init, ready, value, suggestions: {status, data}, setValue, clearSuggestions} = usePlacesAutocomplete({
+    // Wait for initialization
+    initOnMount: false,
     // Focus on locations near Reykjavik in a 100km radius
     requestOptions: {
       location: {lat: () => 64.126518, lng: () => -21.817438},
       radius: 100 * 1000
     }
   });
+
+  useEffect(() => {
+    setMapsLoaded(isLoaded);
+    if(isLoaded) {
+      init();
+    }
+  }, [isLoaded])
   
+  if(!mapsLoaded) return "Loading";
+
+
   return (
     <div className={styles.searchContainer}>
       <Combobox onSelect={async (address) => {

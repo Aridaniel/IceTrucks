@@ -1,7 +1,8 @@
 .truckForm  {
     background-color: rgb(44, 44, 44);
     display: flex;
-    justify-content: center;   
+    justify-content: center;
+    flex-direction: column;   
     height: 100vh;
 }
 .title {

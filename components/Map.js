@@ -39,6 +39,7 @@ export default function Map() {
     mapRef.current = map;
   }, []);
 
+  // Possibly use in useEffect
   if(loadError) return 'Error loading maps...';
   if(!isLoaded) return 'Loading Maps';
 

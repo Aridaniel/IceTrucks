@@ -1,4 +1,3 @@
-
 import Head from 'next/head';
 import Map from '../components/Map';
 import styles from '../styles/Home.module.css';

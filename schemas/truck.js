@@ -6,6 +6,10 @@ let truck = new Schema({
     type: String,
     required: true
   },
+  userId: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true

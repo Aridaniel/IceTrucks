@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import { Redirect, Route } from 'react-router-dom'
-import Link from 'next/link';
 import Image from 'next/image'
 import SuccessModal from '../components/SuccessModal'
 import TagList from '../components/TagList'
 import Search from '../components/Search'
-import Signup from '../pages/signup'
 import tags from '../resources/availableTags'
 import { useAuth } from '../auth'
 import firebaseClient from '../firebaseClient'
 import firebase from 'firebase/app'
+import "firebase/auth";
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAdmin';
 import styles from '../styles/RegisterTruck.module.css'
@@ -48,6 +46,7 @@ function registertruck({session}) {
   /* The POST method adds a new entry in the mongodb database. */
   const postTruck = async () => {
     try {
+      const idToken = await firebase.auth().currentUser.getIdToken(/*Force refresh*/ true);
       const res = await fetch('http://localhost:3000/api/truck', {
         method: 'POST',
         body: JSON.stringify({
@@ -61,6 +60,7 @@ function registertruck({session}) {
         }),
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': idToken
         },
       })
       const data = await res.json();

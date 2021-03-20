@@ -19,7 +19,7 @@ export default function Map() {
 
   useEffect( async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/truck');
+      const response = await fetch((!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'http://localhost:3000/api/truck' : 'https://ice-trucks.herokuapp.com/api/truck');
       const data = await response.json();
       setTrucks(data.data)
       console.log(data.data)

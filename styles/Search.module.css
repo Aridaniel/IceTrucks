@@ -1,0 +1,8 @@
+.searchContainer {
+  width: 100%;
+}
+
+.searchContainer input {
+  width: 100%;
+  padding: 0.4rem;
+}

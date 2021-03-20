@@ -112,6 +112,7 @@ function registertruck({session}) {
   if(session) {
     return (
       <>
+        {/* Skip this user check? */}
         {user ?
         <div className={styles.truckForm}>
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -188,7 +189,7 @@ function registertruck({session}) {
           </button>
 
           {success ? <SuccessModal truck={addedTruck} success={success} setSuccess={setSuccess}/> : null}
-        </div> : <div>WTF</div>}
+        </div> : <div>Redirecting</div>}
       </>
     );
   } else {
@@ -206,9 +207,9 @@ export async function getServerSideProps(context) {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     const {uid, email, name} = token;
-    console.log('TOKEN: ', token);
+    // console.log('TOKEN: ', token);
     return {
-      props: {session: `Your email is: ${email} and your UID is: ${uid} and name: ${name}`}
+      props: {session: 'success'}
     }
   } catch(error) {
     // We don't have a cookie and we need them to reauthenticate
@@ -218,4 +219,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default registertruck
+export default registertruck;

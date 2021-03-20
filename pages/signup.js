@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import firebaseClient from '../firebaseClient'
 import firebase from 'firebase/app'
@@ -7,6 +8,7 @@ import styles from '../styles/Signup.module.css'
 
 export default function signup() {
   firebaseClient();
+  const router = useRouter();
   const [userName, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,8 +17,7 @@ export default function signup() {
     await firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
       let user = firebase.auth().currentUser;
       user.updateProfile({displayName: userName}).then(() =>{}).catch((error) => {console.log('UsernameError: ', error)});
-      console.log('Updated user with name: ', userName);
-      window.location.href = "/registertruck";
+      router.push('/registertruck');
     }).catch((error) => {
       const message = error.message;
       console.log('Error: ', message);

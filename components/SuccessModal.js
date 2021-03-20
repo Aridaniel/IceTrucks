@@ -1,15 +1,17 @@
 import React from 'react'
 import Modal from 'react-modal'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/SuccessModal.module.css'
 
 Modal.setAppElement('body')
 function SuccessModal({truck, success, setSuccess}) {
+  const router = useRouter();
   // Closing modal and returning to home route 
   function closeModal() {
     setSuccess(false);
-    window.location.href = "/";
+    router.push('/');
   }
 
   return (

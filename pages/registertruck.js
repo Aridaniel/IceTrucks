@@ -10,7 +10,7 @@ import firebase from 'firebase/app'
 import "firebase/auth";
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAdmin';
-import styles from '../styles/RegisterTruck.module.css'
+import styles from '../styles/RegisterTrucks.module.css'
 import { Data } from '@react-google-maps/api';
 
 /*  ToDo to PREVENT CRASH: */

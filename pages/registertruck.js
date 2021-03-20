@@ -16,7 +16,7 @@ import { Data } from '@react-google-maps/api';
 /*  ToDo to PREVENT CRASH: */
 //  Verify the register truck data
 //  - Dont allow string for phone number
-//  - Other checks as well...
+//  - Other checks as well....
 function registertruck({session}) {
   firebaseClient();
   const { user } = useAuth();

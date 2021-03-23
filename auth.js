@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) => {
         nookies.set(undefined, "token", "", {});
         return;
       }
-      console.log(`USER: `, user.toJSON())
+      // console.log(`USER: `, user.toJSON())
       const token = await user.getIdToken();
       // verifyIdToken(token).then((claims) => {console.log(claims)});
       setUser(user);
@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) => {
       firebase.auth().currentUser.getIdTokenResult()
       .then((idTokenResult) => {
         // Confirm the user is an Admin.
-        console.log(`Claims`, idTokenResult.claims)
+        // console.log(`Claims`, idTokenResult.claims)
       })
       .catch((error) => {
         console.log(error);

@@ -35,7 +35,7 @@ function registertruck({session}) {
   });
 
   useEffect(() => {
-    console.log('TruccUser: ', user);
+    // console.log('TruccUser: ', user);
     router.prefetch('/');
     return () => {
       // Just making sure that success modal closes when component dismounts

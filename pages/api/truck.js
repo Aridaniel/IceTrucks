@@ -35,7 +35,7 @@ const handler = async (req, res) => {
             userId: decodedToken.uid,
             email,
             phone,
-            menu: menu !== null ? menu : 'No menu yet',
+            menu: menu === null || menu === '' ? 'No menu yet' : menu,
             description,
             location,
             tags

@@ -5,7 +5,7 @@ import Header from '../components/Header';
 
 export default function Home() {
   return (
-    <div >
+    <div>
       <Head>
         <title>Food Trucks Frontpage</title>
         <link rel='icon' href='/favicon.ico' />

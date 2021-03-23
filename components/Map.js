@@ -17,15 +17,17 @@ export default function Map() {
     // Enable libraries here such as places to use them.
   });
 
-  useEffect( async () => {
-    try {
-      const response = await fetch((!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'http://localhost:3000/api/truck' : 'https://ice-trucks.herokuapp.com/api/truck');
-      const data = await response.json();
-      setTrucks(data.data)
-      console.log(data.data)
-    } catch(error) {
-      console.log('Error: ', error);
+  useEffect(() => {
+    const fetchTrucks = async () => {
+      try {
+        const response = await fetch((!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'http://localhost:3000/api/truck' : 'https://ice-trucks.herokuapp.com/api/truck');
+        const data = await response.json();
+        setTrucks(data.data)
+      } catch(error) {
+        console.log('Error: ', error);
+      }
     }
+    fetchTrucks();
   }, []);
 
   // Logs out the lat/lng at the click location
@@ -75,7 +77,7 @@ export default function Map() {
           key={truck._id} 
           position={pos} 
           onClick={() => handleTruckClick(truck)} 
-          icon={{url: '/redMarker.svg'}} 
+          icon={{url: '/redFillMarker.svg'}} 
           />
       })
       }

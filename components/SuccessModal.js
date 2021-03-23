@@ -28,9 +28,7 @@ function SuccessModal({truck, success, setSuccess}) {
           <h2>Success!</h2>
           <p>You have successfully registered {truck.name}</p>
         </div>
-        <Link href="/">
-          <a className={styles.modalBtn}>OK</a>
-        </Link>
+        <button className={styles.modalBtn} onClick={() => closeModal()}>OK</button>
       </div>
     </Modal>
   </>     

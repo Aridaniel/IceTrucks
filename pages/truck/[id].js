@@ -5,7 +5,7 @@ export default function Truck({ truckData }) {
   return (
     <>
       <h1>Truck Details</h1>
-      <div>{truckData.response.name}</div>
+      <div >{truckData.response.name}</div>
       <div>{truckData.response.email}</div>
       <div>{truckData.response.menu}</div>
       <div>{truckData.response.phone}</div>

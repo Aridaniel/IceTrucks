@@ -22,16 +22,12 @@ function alltrucks({ staticTruck }) {
         <div className={styles.listOfAll}>
           {trucks.map((truck) => (
             <Link href={`/truck/${truck._id}`}>
-              <a className={styles.truckModul}>
+              <a key={truck._id} className={styles.truckModul}>
                 <Image src={'/tmpTruck.svg'} width={100} height={100}></Image>
                 <div className={styles.textBox}>
-                  <h2 className={styles.truckTitle} key={truck._id}>
-                    {truck.name}
-                  </h2>
+                  <h2 className={styles.truckTitle}>{truck.name}</h2>
                   <div>
-                    <p className={styles.location} key={truck._id}>
-                      {truck.address}
-                    </p>
+                    <p className={styles.location}>{truck.address}</p>
                   </div>
                   <div className={styles.allTags}>
                     <div className={styles.tag}>{truck.tags[0]}</div>

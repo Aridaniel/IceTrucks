@@ -22,7 +22,6 @@ export default function Map({ staticTruck }) {
     // Enable libraries here such as places to use them.
   });
 
-
   // Logs out the lat/lng at the click location
   const handleMapClick = useCallback((event) => {
     console.log('lat: ' + event.latLng.lat() + ', lng: ' + event.latLng.lng());
@@ -72,12 +71,19 @@ export default function Map({ staticTruck }) {
       {/* To change the marker style add the icon property to the Marker component in the map function (create a svg and control the size) */}
       {/* {markers.map((marker, index) => <Marker key={index} position={{lat: marker.lat, lng: marker.lng}} icon={{url: '/redMarker.svg'}}/>)} */}
       {trucks.map((truck, index) => {
-        const pos = typeof truck.location === 'object' ? {lat:parseFloat(truck.location.lat),lng:parseFloat(truck.location.lng)} : {lat: 50, lng:-18}
-        return <Marker 
-          key={truck._id} 
-          position={pos} 
-          onClick={() => handleTruckClick(truck)} 
-          icon={{url: '/redFillMarker.svg'}} 
+        const pos =
+          typeof truck.location === 'object'
+            ? {
+                lat: parseFloat(truck.location.lat),
+                lng: parseFloat(truck.location.lng),
+              }
+            : { lat: 50, lng: -18 };
+        return (
+          <Marker
+            key={truck._id}
+            position={pos}
+            onClick={() => handleTruckClick(truck)}
+            icon={{ url: '/redFillMarker.svg' }}
           />
         );
       })}

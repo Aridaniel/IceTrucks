@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import Header2 from '../components/Header2';
-import styles from '../styles/Alltrucks.module.css';
+import styles from '../styles/AllTrucks.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import TagList from '../components/TagList';

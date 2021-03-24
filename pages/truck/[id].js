@@ -1,16 +1,16 @@
 import React from 'react';
 
 export default function Truck({ truckData }) {
-  console.log(truckData);
+  // console.log(truckData);
   return (
     <>
       <h1>Truck Details</h1>
-      <div >{truckData.response.name}</div>
-      <div>{truckData.response.email}</div>
-      <div>{truckData.response.menu}</div>
-      <div>{truckData.response.phone}</div>
-      <div>{truckData.response.description}</div>
-      <div>{truckData.response.tags[0]}</div>
+      <div >{truckData.name}</div>
+      <div>{truckData.email}</div>
+      <div>{truckData.menu}</div>
+      <div>{truckData.phone}</div>
+      <div>{truckData.description}</div>
+      <div>{truckData.tags[0]}</div>
     </>
   );
 }
@@ -30,7 +30,7 @@ export async function getStaticPaths() {
       },
     };
   });
-  console.log('ARrayyy', idArray);
+  // console.log('Arrayyy', idArray);
   return {
     paths: idArray,
     fallback: false,
@@ -46,7 +46,7 @@ export async function getStaticProps({ params }) {
       : `https://ice-trucks.herokuapp.com/api/truck/${id}`
   );
   const response = await data.json();
-  const truckData = { id, response };
+  const truckData = { id, ...response };
   return {
     props: {
       truckData,

@@ -3,9 +3,13 @@ import Truck from '../../../schemas/truck';
 
 const handler = async (req, res) => {
   if (req.method === 'GET') {
-    const id = req.query.id;
-    const data = await Truck.findById(id);
-    res.status(200).json(data);
+    try {
+      const id = req.query.id;
+      const data = await Truck.findById(id);
+      res.status(200).json(data);
+    } catch(error) {
+      res.status(400).json({'error': 'No truck with given id'})
+    }
   }
 };
 

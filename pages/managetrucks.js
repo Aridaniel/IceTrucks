@@ -14,7 +14,7 @@ export default function managetrucks({session}) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log('Session: ', session);
+    // console.log('Session: ', session);
   }, [])
   // If session has admin property set to true then display the list
   if(session.admin) {

@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  /* background-image: url('https://images.pexels.com/photos/1264937/pexels-photo-1264937.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'); */
+  margin: 60px;
+  border-radius: 11px;
+  opacity: 0.8;
+  z-index: 5;
+}
+.h1 {
+  z-index: 6;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  margin: 2rem 1rem;
+  width: 23ch;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: caret 0.5s step-end infinite alternate, type 5s steps(23, end);
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+}
+@keyframes caret {
+  50% {
+    box-shadow: 0.6em 0 0 transparent;
+  }
+}

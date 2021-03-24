@@ -5,7 +5,7 @@ import Link from 'next/link';
 // Using react modal library
 import Modal from 'react-modal';
 // icon
-import { GrClose } from 'react-icons/gr';
+import { MdClose } from 'react-icons/md';
 // ──────────────────────────────────
 // ──────▄▀▀▄────────────────▄▀▀▄────
 // ─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
@@ -39,8 +39,7 @@ import { GrClose } from 'react-icons/gr';
 // ▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
 
-Modal.setAppElement('body')
-
+Modal.setAppElement('body');
 
 export default function Nav({ modalIsOpen, setIsOpen }) {
   //////////////////////////////////
@@ -72,14 +71,24 @@ export default function Nav({ modalIsOpen, setIsOpen }) {
           {/* Close button */}
 
           <div className={styles.buttonContainer}>
-            <button className={styles.Button} onClick={closeModal}>
-              <GrClose onClick={closeModal} />
+            <button className={styles.button} onClick={closeModal}>
+              <MdClose onClick={closeModal} />
             </button>
           </div>
           <div className={styles.navText}>
+            <Link href='/'>
+              <a>
+                <h1>Map</h1>
+              </a>
+            </Link>
+            <Link href='/login'>
+              <a>
+                <h1>Log in</h1>
+              </a>
+            </Link>
             <Link href='/alltrucks'>
               <a>
-                <h1>All Food Trucks</h1>
+                <h1>Food Trucks</h1>
               </a>
             </Link>
             <Link href='/registertruck'>
@@ -97,7 +106,7 @@ export default function Nav({ modalIsOpen, setIsOpen }) {
 // custom styles for the Modal component
 const customStyles = {
   content: {
-    top: '10%',
+    top: '20%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',

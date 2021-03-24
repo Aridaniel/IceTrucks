@@ -1,0 +1,46 @@
+.container {
+  background-color: rgb(44, 44, 44);
+  min-height: 100vh;
+}
+.listOfAll {
+  margin-top: 2rem;
+  display: grid;
+  justify-items: center;
+  gap: 2rem;
+}
+.truckModul {
+  background-color: rgba(91, 91, 89);
+  width: 80%;
+  height: 10rem;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.textBox {
+}
+
+.truckTitle {
+  color: white;
+  margin-top: 1rem;
+  text-align: center;
+}
+.location {
+  color: white;
+  width: 4rem;
+}
+.allTags {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 1rem;
+  padding: 0.3rem;
+  text-align: center;
+}
+.tag {
+  color: white;
+  background-color: rgb(200, 49, 35);
+  padding: 0.2rem;
+  border-radius: 5px;
+  width: 4rem;
+}

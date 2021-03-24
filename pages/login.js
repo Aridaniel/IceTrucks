@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import firebaseClient from '../firebaseClient'
 import firebase from 'firebase/app'
 import { useAuth } from '../auth'
 import "firebase/auth"

@@ -2,25 +2,34 @@ import React from 'react';
 import { getAllTruckIds, getTruckData } from '../../lib/trucks';
 import Link from 'next/link';
 import styles from '../../styles/TruckDetails.module.css';
+import Header2 from '../../components/Header2';
 
 export default function Truck({ truckData }) {
   // console.log(truckData);
-  
+
   return (
-    <div className={styles.container}>
-      {truckData ?
-      <>
-        <h1>Truck Details</h1>
-        <div>{truckData.name}</div>
-        <div>{truckData.email}</div>
-        <div>{truckData.menu}</div>
-        <div>{truckData.phone}</div>
-        <div>{truckData.description}</div>
-        <div>{truckData.tags[0]}</div>
-        <Link href={'/alltrucks'}><a>Go Back</a></Link>
-      </>
-      : <div>No Info</div>}
-    </div>
+    <>
+      {/* <Header2/> */}
+      <div className={styles.container}>
+        {truckData ? (
+          <>
+            <Image src="/tmpTruck.svg" width={200} height={200}></Image>
+            <h2>{truckData.name}</h2>
+            <div>{truckData.address}</div>
+            <div>{truckData.phone}</div>
+            <div>{truckData.email}</div>
+            <div>{truckData.menu}</div>
+            <div>{truckData.description}</div>
+            <div>{truckData.tags}</div>
+            <Link href={'/alltrucks'}>
+              <a className={styles.showOmMapBtn}>Show on Map</a>
+            </Link>
+          </>
+        ) : (
+          <div>No Info</div>
+        )}
+      </div>
+    </>
   );
 }
 
@@ -28,8 +37,8 @@ export async function getStaticPaths() {
   const paths = await getAllTruckIds();
   return {
     paths: paths,
-    fallback: false
-  }
+    fallback: false,
+  };
   // Return a list of possible value for id
   // const data = await fetch(
   //   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
@@ -56,9 +65,9 @@ export async function getStaticProps({ params }) {
   const truckData = await getTruckData(params.id);
   return {
     props: {
-      truckData
-    }
-  }
+      truckData,
+    },
+  };
 
   // Fetch necessary data for the blog post using params.id
   // const id = params.id;

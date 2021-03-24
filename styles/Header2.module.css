@@ -1,0 +1,33 @@
+.header {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  align-items: center;
+  height: 5rem;
+  width: 100%;
+}
+
+.truckSearch {
+  border-style: none;
+  padding-left: 0.3rem;
+  border-radius: 4px;
+  width: 80%;
+  height: 2rem;
+}
+
+.burgerOpen {
+  display: none;
+}
+
+.foodTruckTitle {
+  font-family: 'Rockwell';
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  color: rgb(209, 209, 209);
+  font-weight: 100;
+  letter-spacing: 10;
+}
+
+.inputContainer {
+  text-align: center;
+}

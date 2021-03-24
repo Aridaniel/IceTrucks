@@ -1,0 +1,77 @@
+import { React, useState, useEffect } from 'react';
+import Header2 from '../components/Header2';
+import styles from '../styles/Alltrucks.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import TagList from '../components/TagList';
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from 'use-places-autocomplete';
+
+function alltrucks({ staticTruck }) {
+  const [trucks, setTrucks] = useState(staticTruck);
+
+  return (
+    <>
+      <div className={styles.container}>
+        <div>
+          <Header2 />
+        </div>
+
+        <div className={styles.listOfAll}>
+          {trucks.map((truck) => (
+            <Link href={`/truck/${truck._id}`}>
+              <a className={styles.truckModul}>
+                <Image src={'/tmpTruck.svg'} width={100} height={100}></Image>
+                <div className={styles.textBox}>
+                  <h2 className={styles.truckTitle} key={truck._id}>
+                    {truck.name}
+                  </h2>
+                  <div>
+                    <p className={styles.location} key={truck._id}>
+                      {truck.address}
+                    </p>
+                  </div>
+                  <div className={styles.allTags}>
+                    <div className={styles.tag}>{truck.tags[0]}</div>
+                    <div className={styles.tag}>{truck.tags[1]}</div>
+                    {/* <div className={styles.tag}>{truck.tags[2]}</div>
+                    <div className={styles.tag}>{truck.tags[3]}</div> */}
+                  </div>
+                </div>
+              </a>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default alltrucks;
+
+export async function getStaticProps() {
+  let staticTruck;
+  try {
+    const response = await fetch(
+      !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/api/truck'
+        : 'https://ice-trucks.herokuapp.com/api/truck'
+    );
+    const data = await response.json();
+    staticTruck = data.data;
+  } catch (error) {
+    console.log('Error: ', error);
+  }
+
+  return {
+    props: {
+      staticTruck,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 5, // In seconds
+  };
+}

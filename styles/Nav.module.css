@@ -6,20 +6,18 @@
 }
 
 .navContainer {
-  display: flex;
-  flex-direction: column;
   width: 100%;
+  
 }
 
 .buttonContainer {
-  width: 100%;
-  justify-content: center;
-  align-content: center;
 }
 
 .Button {
 }
 
 .navText {
-
+  
+  font-size: 14px;
+  margin: '1rem';
 }

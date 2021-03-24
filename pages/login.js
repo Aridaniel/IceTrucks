@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import firebaseClient from '../firebaseClient'
 import firebase from 'firebase/app'
 import "firebase/auth"
 import styles from '../styles/Login.module.css'
@@ -19,7 +18,7 @@ export default function login() {
       const message = error.message;
       console.log('Error: ', message);
     })
-    console.log('Signing up');
+    
   }
 
   return (

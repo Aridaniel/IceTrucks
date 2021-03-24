@@ -15,7 +15,7 @@ let truck = new Schema({
     required: true
   },
   phone: {
-    type: Number,
+    type: String,
     required: false
   },
   menu: {

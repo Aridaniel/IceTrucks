@@ -6,6 +6,10 @@
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  background-color: rgb(44, 44, 44);
+}
+
 a {
   color: inherit;
   text-decoration: none;

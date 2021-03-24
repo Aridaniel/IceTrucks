@@ -14,7 +14,16 @@ const serviceAccount = {
   "client_x509_cert_url": process.env.CLIENT_X509_CERT_URL
 }
 
-export const verifyIdToken = (token) => {
+const initApp = () => {
+  if(!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      databaseURL: "https://ice-truck-2d148-default-rtdb.firebaseio.com/"
+    });
+  }
+}
+
+export const verifyIdToken = async (token) => {
   if(!admin.apps.length) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
@@ -25,4 +34,18 @@ export const verifyIdToken = (token) => {
   return admin.auth().verifyIdToken(token).catch((error) => {
     throw error;
   });
+}
+
+// Edit a user's custom claim admin role
+export const editUserAsAdmin = async (userId, isAdmin) => {
+  if(!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      databaseURL: "https://ice-truck-2d148-default-rtdb.firebaseio.com/"
+    });
+  }
+
+  return admin
+  .auth()
+  .setCustomUserClaims(userId, { admin: isAdmin });
 }

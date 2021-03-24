@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import SuccessModal from '../components/SuccessModal'
 import TagList from '../components/TagList'
 import Search from '../components/Search'
@@ -10,20 +11,18 @@ import firebase from 'firebase/app'
 import "firebase/auth";
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAdmin';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/RegisterTrucks.module.css'
-import { Data } from '@react-google-maps/api';
 
-/*  ToDo to PREVENT CRASH: */
-//  Verify the register truck data
-//  - Dont allow string for phone number
-//  - Other checks as well....
 function registertruck({session}) {
   firebaseClient();
   const { user } = useAuth();
+  const router = useRouter();
   const [success, setSuccess] = useState(false)
   // Temporary truck for testing the modal
   const [tmpTruck, setTmpTruck] = useState({name: 'Pizza Truck', email: 'owner@pizza.com', phone: 1112233, menu: 'https://somepizzastore.com/menu', description: 'This is an awesome pizza place for everyone to come to enjoy', location: {lat: 50, lng: 50}})
-  const [addedTruck, setaddedTruck] = useState(null)
+  const [addedTruck, setAddedTruck] = useState(null)
   const [chosenLocation, setChosenLocation] = useState({})
   const [chosenTags, setChosenTags] = useState([])
   const [form, setForm] = useState({
@@ -36,10 +35,12 @@ function registertruck({session}) {
   });
 
   useEffect(() => {
+    // console.log('TruccUser: ', user);
+    router.prefetch('/');
     return () => {
       // Just making sure that success modal closes when component dismounts
       setSuccess(false);
-      setaddedTruck(null);
+      setAddedTruck(null);
     }
   }, [])
 
@@ -67,13 +68,14 @@ function registertruck({session}) {
       // Throw error with status code in case Fetch API req failed
       if (data.message){
         return;
-      }else{
+      } else {
         console.log( 'Added Truck: ', data)
-        setaddedTruck(data)
+        setAddedTruck(data)
         setSuccess(true)
       }
     } catch (error) {
       console.log('Failed to add Truck', error)
+      truckFormAlert(error);
     }
   }
 
@@ -84,6 +86,11 @@ function registertruck({session}) {
 
   const handleSubmit =(e)=>{
     e.preventDefault()
+    if(!chosenLocation.lat) {
+      // console.log('Needs a location...');
+      truckFormAlert('Type in a location and select it from the list.')
+      return;
+    }
     postTruck()
   }
 
@@ -109,15 +116,20 @@ function registertruck({session}) {
     }
     setChosenTags([...chosenTags, tagName]);
   }
+
+  const truckFormAlert = (error) => {
+    toast.warn(error, {position: 'bottom-center', closeButton: false, style: {color: 'black'}})
+  }
+
+  // Maybe also check if user in order to render the 'Loading' page while user signs out?
   if(session) {
     return (
       <>
         {/* Skip this user check? */}
-        {user ?
         <div className={styles.truckForm}>
           <form onSubmit={handleSubmit} className={styles.form}>
             <h1 className={styles.title}>The Trucks Info</h1>
-            <p style={{color:"white"}}>User name: {user.displayName}</p>
+            <p style={{color:"white"}}>User name: {user ? user.displayName : 'NoName'}</p>
             <Image src='/addphoto.svg'  width='200' height='200'></Image>
             {/* <input 
               name='image_url' 
@@ -183,13 +195,14 @@ function registertruck({session}) {
           </form>
           <button onClick={async () => {
             await firebase.auth().signOut();
-            window.location.href = "/";
+            router.push('/');
           }}>
             Sign out
           </button>
+          <ToastContainer position="bottom-center" autoClose={4000} hideProgressBar={true}/>
 
           {success ? <SuccessModal truck={addedTruck} success={success} setSuccess={setSuccess}/> : null}
-        </div> : <div>Redirecting</div>}
+        </div>
       </>
     );
   } else {
@@ -206,10 +219,10 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    const {uid, email, name} = token;
+    console.log('verified: ', token);
     // console.log('TOKEN: ', token);
     return {
-      props: {session: 'success'}
+      props: {session: token}
     }
   } catch(error) {
     // We don't have a cookie and we need them to reauthenticate

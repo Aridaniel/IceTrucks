@@ -24,6 +24,7 @@ function registertruck({session}) {
   const [tmpTruck, setTmpTruck] = useState({name: 'Pizza Truck', email: 'owner@pizza.com', phone: 1112233, menu: 'https://somepizzastore.com/menu', description: 'This is an awesome pizza place for everyone to come to enjoy', location: {lat: 50, lng: 50}})
   const [addedTruck, setAddedTruck] = useState(null)
   const [chosenLocation, setChosenLocation] = useState({})
+  const [chosenAddress, setChosenAddress] = useState('')
   const [chosenTags, setChosenTags] = useState([])
   const [form, setForm] = useState({
     name:'',
@@ -56,6 +57,7 @@ function registertruck({session}) {
           phone: form.phone,
           menu: form.menu,
           description: form.description,
+          address: chosenAddress,
           location: chosenLocation,
           tags: chosenTags
         }),
@@ -67,9 +69,9 @@ function registertruck({session}) {
       const data = await res.json();
       // Throw error with status code in case Fetch API req failed
       if (data.message){
+        console.log('data: ', data)
         return;
       } else {
-        console.log( 'Added Truck: ', data)
         setAddedTruck(data)
         setSuccess(true)
       }
@@ -93,16 +95,6 @@ function registertruck({session}) {
     }
     postTruck()
   }
-
-  /* Makes sure pet info is filled for pet name, owner name, species, and image url*/
-  /*  const formValidate = () => {
-    let err = {}
-    if (!form.truckname) err.truckname = 'Name is required'
-    if (!form.email) err.email = 'Owner is required'
-    if (!form.species) err.species = 'Species is required'
-    if (!form.image_url) err.image_url = 'Image URL is required'
-    return err
-  } */
 
   // Handles the list of chosen tags
   const updateChosenTags = (tagName) => {
@@ -182,7 +174,7 @@ function registertruck({session}) {
               placeholder='Trucks Description'
               required
             ></input>
-            <Search setChosenLocation={setChosenLocation}/>
+            <Search setChosenLocation={setChosenLocation} setChosenAddress={setChosenAddress} />
             {/* <input 
               name='location'
               onChange={handleChange} 
@@ -219,7 +211,6 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    console.log('verified: ', token);
     // console.log('TOKEN: ', token);
     return {
       props: {session: token}

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import firebaseClient from '../firebaseClient'
 import firebase from 'firebase/app'
 import "firebase/auth"
-import Nav from '../components/Nav'
 import { useAuth } from '../auth'
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';

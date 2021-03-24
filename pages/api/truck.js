@@ -26,7 +26,7 @@ const handler = async (req, res) => {
     });
     
     if(canPost) {
-      const { name, email, phone, menu, description, location, tags} = req.body;
+      const { name, email, phone, menu, description, address, location, tags} = req.body;
       // Check if name, email, phone, description or /* tags */ are provided
       if (name && email && phone && description/* && tags */) {
         try {
@@ -37,6 +37,7 @@ const handler = async (req, res) => {
             phone,
             menu: menu === null || menu === '' ? 'No menu yet' : menu,
             description,
+            address,
             location,
             tags
           });

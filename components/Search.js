@@ -8,7 +8,7 @@ import styles from '../styles/Search.module.css'
 // Keeping library prop as an array outside of the component prevents 'LoadScript has been reloaded unintentionally' warning
 const libraries = ["places"];
 
-export default function Search({setChosenLocation}) {
+export default function Search({setChosenLocation, setChosenAddress}) {
   const [mapsLoaded, setMapsLoaded] = useState(false)
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_KEY,
@@ -42,6 +42,8 @@ export default function Search({setChosenLocation}) {
       <Combobox onSelect={async (address) => {
         // When a user selects a location we set the combobox value to the address and clear the suggestion list
         setValue(address, false);
+        console.log('InComboAddress: ', address);
+        setChosenAddress(address);
         clearSuggestions();
 
         try {

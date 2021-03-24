@@ -26,6 +26,10 @@ let truck = new Schema({
     type: String,
     required: true
   },
+  address: {
+    type: String,
+    required: false
+  },
   location: {
     type: Object,
     required: false

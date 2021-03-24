@@ -41,7 +41,6 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    console.log('verified: ', token);
     // console.log('TOKEN: ', token);
     return {
       props: {session: token}

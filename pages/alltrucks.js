@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import Header2 from '../components/Header2';
+import { getAllTrucks } from '../lib/trucks';
 import styles from '../styles/AllTrucks.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,8 +10,8 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from 'use-places-autocomplete';
 
-function alltrucks({ staticTruck }) {
-  const [trucks, setTrucks] = useState(staticTruck);
+function alltrucks({ allTrucks }) {
+  const [trucks, setTrucks] = useState(allTrucks);
 
   return (
     <>
@@ -45,22 +46,24 @@ function alltrucks({ staticTruck }) {
 export default alltrucks;
 
 export async function getStaticProps() {
-  let staticTruck;
+  let allTrucks;
   try {
-    const response = await fetch(
-      !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/api/truck'
-        : 'https://ice-trucks.herokuapp.com/api/truck'
-    );
-    const data = await response.json();
-    staticTruck = data.data;
+    // const response = await fetch(
+    //   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+    //     ? 'http://localhost:3000/api/truck'
+    //     : 'https://ice-trucks.herokuapp.com/api/truck'
+    // );
+    // const data = await response.json();
+    // staticTruck = data.data;
+    allTrucks = await getAllTrucks();
+
   } catch (error) {
     console.log('Error: ', error);
   }
 
   return {
     props: {
-      staticTruck,
+      allTrucks,
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in

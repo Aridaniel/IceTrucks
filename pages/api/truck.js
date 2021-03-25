@@ -39,7 +39,8 @@ const handler = async (req, res) => {
             description,
             address,
             location,
-            tags
+            tags,
+            visible: false
           });
           let createdTruck = await truck.save();
           return res.status(200).send(createdTruck);

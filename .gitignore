@@ -38,4 +38,3 @@ secrets.json
 
 # api
 /pages/api/setUserAsAdmin.js
-/pages/api/updateTruckStatus.js

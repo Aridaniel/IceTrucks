@@ -70,7 +70,8 @@ export default function Map({ staticTruck }) {
     >
       {/* To change the marker style add the icon property to the Marker component in the map function (create a svg and control the size) */}
       {/* {markers.map((marker, index) => <Marker key={index} position={{lat: marker.lat, lng: marker.lng}} icon={{url: '/redMarker.svg'}}/>)} */}
-      {trucks.map((truck, index) => {
+      {trucks.map((truck, index) => { 
+        if(truck.visible) {
         const pos =
           typeof truck.location === 'object'
             ? {
@@ -78,14 +79,15 @@ export default function Map({ staticTruck }) {
                 lng: parseFloat(truck.location.lng),
               }
             : { lat: 50, lng: -18 };
-        return (
-          <Marker
-            key={truck._id}
-            position={pos}
-            onClick={() => handleTruckClick(truck)}
-            icon={{ url: '/redFillMarker.svg' }}
-          />
-        );
+          return (
+            <Marker
+              key={truck._id}
+              position={pos}
+              onClick={() => handleTruckClick(truck)}
+              icon={{ url: '/redFillMarker.svg' }}
+            />
+          );
+        }
       })}
       {selected ? (
         // ToDo: Style the InfoWindow or maybe create our own modal

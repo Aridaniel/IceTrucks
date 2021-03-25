@@ -26,7 +26,7 @@ function SuccessModal({truck, success, setSuccess}) {
         <div className={styles.truckInfo}>
           <Image src="/tmpTruck.svg" alt="Truck added" width={200} height={200} />
           <h2>Success!</h2>
-          <p>You have successfully registered {truck.name}</p>
+          <p>You have successfully registered {truck.name}! It is now pending approval to be displayed on the map.</p>
         </div>
         <button className={styles.modalBtn} onClick={() => closeModal()}>OK</button>
       </div>

@@ -8,7 +8,6 @@ export default function Tag({tagName, updateTagList}) {
     const tagName = ev.target.innerHTML;
     setSelected(!selected);
     updateTagList(tagName);
-    console.log('Clicked: ', tagName);
   }
 
   return (

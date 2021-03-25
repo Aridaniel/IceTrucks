@@ -37,6 +37,10 @@ let truck = new Schema({
   tags: {
     type: Array,
     required: true
+  },
+  visible: {
+    type: Boolean,
+    required: true
   }
 });
 

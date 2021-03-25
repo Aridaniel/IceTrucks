@@ -19,7 +19,7 @@ export default function login() {
   }, []);
 
   const handleLogin = async () => {
-    // User already logged in 
+    // User already logged in...
     if(user) {
       toast.warn('Already logged in', {position: 'bottom-center', closeButton: false, style: {color: 'black'}});
       return;

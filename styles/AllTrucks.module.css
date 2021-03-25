@@ -46,6 +46,7 @@
   text-align: center;
 }
 .tag {
+  display: flex;
   color: white;
   font-size: 10px;
   background-color: rgb(200, 49, 35);
@@ -54,4 +55,5 @@
   height: 1rem;
   width: 2.8rem;
   align-items: center;
+  justify-content: center;
 }

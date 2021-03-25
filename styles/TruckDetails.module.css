@@ -20,6 +20,14 @@
   flex-direction: row;
 }
 
+.textInfoBox div {
+
+}
+
+.truckImage {
+  border-radius: 11px;
+}
+
 .text {
   color: rgb(156, 156, 156);
 }

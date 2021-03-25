@@ -3,24 +3,27 @@ import { getAllTruckIds, getTruckData } from '../../lib/trucks';
 import Link from 'next/link';
 import styles from '../../styles/TruckDetails.module.css';
 import Header2 from '../../components/Header2';
+import Image from 'next/image'
 
 export default function Truck({ truckData }) {
   // console.log(truckData);
 
   return (
     <>
-      {/* <Header2/> */}
+      <Header2/>
       <div className={styles.container}>
         {truckData ? (
           <>
             <Image src="/tmpTruck.svg" width={200} height={200}></Image>
-            <h2>{truckData.name}</h2>
-            <div>{truckData.address}</div>
-            <div>{truckData.phone}</div>
-            <div>{truckData.email}</div>
-            <div>{truckData.menu}</div>
-            <div>{truckData.description}</div>
-            <div>{truckData.tags}</div>
+            <div className={styles.textInfo}>
+                <h2>{truckData.name}</h2>
+                <div>{truckData.address}</div>
+                <div>{truckData.phone}</div>
+                <div>{truckData.email}</div>
+                <div>{truckData.menu}</div>
+                <div>{truckData.description}</div>
+                <div>{truckData.tags}</div>
+            </div>
             <Link href={'/alltrucks'}>
               <a className={styles.showOmMapBtn}>Show on Map</a>
             </Link>

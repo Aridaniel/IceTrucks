@@ -7,11 +7,11 @@ let cachedClient = null;
 let cachedDb = null;
 
 if (!uri) {
-  throw new Error(process.env.MONGODB_URI);
+  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
 if (!dbName) {
-  throw new Error(process.env.MONGODB_URI);
+  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
 export async function connectToDatabase() {

@@ -1,9 +1,24 @@
 .container {
+  margin-top: 2rem;
   color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  font-size: 14;
+}
+
+.textInfo{
+  margin: 2rem;
+ text-align: center;
+
 }
 
 .showOmMapBtn {
   background-color: rgb(200, 49, 35);
+  text-align: center;
   color: white;
-  border-radius: 5px;
+  border-radius: 7px;
+  width:80%,
+
 }

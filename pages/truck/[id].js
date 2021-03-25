@@ -70,9 +70,10 @@ export async function getStaticProps({ params }) {
   const truckData = await getTruckData(params.id);
   return {
     props: {
-      truckData,
+      truckData
     },
-  };
+    revalidate: 3
+  }
 
   // Fetch necessary data for the blog post using params.id
   // const id = params.id;

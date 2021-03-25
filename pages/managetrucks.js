@@ -14,7 +14,7 @@ import styles from '../styles/ManageTrucks.module.css';
 
 export default function managetrucks({session, allTrucks}) {
   firebaseClient();
-  const [trucks, setTrucks] = useState([]);
+  const [trucks, setTrucks] = useState(allTrucks);
   const router = useRouter();
 
   useEffect(() => {
@@ -55,6 +55,32 @@ export default function managetrucks({session, allTrucks}) {
     }
   }
 
+  const deleteTruckById = async (id) => {
+    console.log('Deleting: ', id)
+    try {
+      const idToken = await firebase.auth().currentUser.getIdToken(true);
+      const res = await fetch((!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? `http://localhost:3000/api/deleteTruck/${id}` : `https://ice-trucks.herokuapp.com/api/deleteTruck/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': idToken
+        }
+      });
+      const data = await res.json();
+      if(data.msg) {
+        console.log('data: ', data);
+        return;        
+      } else {
+        // console.log('Truck visible updated id: ', id);
+        manageFormSuccess('Trucks deleted!');
+        const arrCpy = trucks.filter((item) => item._id !== id);
+        setTrucks(arrCpy);
+      }
+    } catch(error) {
+      manageFormAlert(error);
+    }
+  }
+
   const manageFormAlert = (error) => {
     toast.warn(error, {position: 'bottom-center', closeButton: false, style: {color: 'black'}})
   }
@@ -73,7 +99,7 @@ export default function managetrucks({session, allTrucks}) {
           <h3>Logged in: {session.name}</h3>
         </div>
         <div className={styles.truckList}>
-          {allTrucks ? allTrucks.map((truck, index) => <ManageTruckItem key={index} truck={truck} updateStatus={updateStatus}/>) : 'No trucks to show'}
+          {trucks ? trucks.map((truck, index) => <ManageTruckItem key={index} truck={truck} updateStatus={updateStatus} deleteTruckById={deleteTruckById}/>) : 'No trucks to show'}
         </div>
         <Link href={"/"}>Back to frontpage</Link>
         <ToastContainer position="bottom-center" autoClose={2500} hideProgressBar={true}/>

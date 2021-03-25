@@ -28,6 +28,12 @@ div .form input {
     height: 2rem; 
 }
 
+.greeting {
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+}
+
 .selectTagsTitle {
     color: white;
     font-size: medium;
@@ -43,4 +49,13 @@ div .form input {
     background-color: rgb(200, 49, 35);
     color:white;
     margin-top: 1rem;
+}
+
+.logoutBtn {
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: rgb(200, 49, 35);
+    color:white;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
 }

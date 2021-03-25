@@ -11,6 +11,7 @@ import firebase from 'firebase/app'
 import "firebase/auth";
 import nookies from 'nookies';
 import { verifyIdToken } from '../firebaseAdmin';
+import Header2 from '../components/Header2';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/RegisterTrucks.module.css'
@@ -118,10 +119,12 @@ function registertruck({session}) {
     return (
       <>
         {/* Skip this user check? */}
+        <div>
+          <Header2 />
+        </div>
         <div className={styles.truckForm}>
           <form onSubmit={handleSubmit} className={styles.form}>
-            <h1 className={styles.title}>The Trucks Info</h1>
-            <p style={{color:"white"}}>User name: {user ? user.displayName : 'NoName'}</p>
+            <p className={styles.greeting}>Hello {user ? user.displayName : ''}</p>
             <Image src='/addphoto.svg'  width='200' height='200'></Image>
             {/* <input 
               name='image_url' 
@@ -174,17 +177,11 @@ function registertruck({session}) {
               required
             ></input>
             <Search setChosenLocation={setChosenLocation} setChosenAddress={setChosenAddress} />
-            {/* <input 
-              name='location'
-              onChange={handleChange} 
-              type='text' 
-              placeholder='Location'
-            ></input> */}
             <h3 className={styles.selectTagsTitle}>Select Tags</h3>
             <TagList tags={tags} updateTagList={updateChosenTags}/>
             <button className={styles.submitBtn} type="submit" >Submit</button>   
           </form>
-          <button onClick={async () => {
+          <button className={styles.logoutBtn} onClick={async () => {
             await firebase.auth().signOut();
             router.push('/');
           }}>

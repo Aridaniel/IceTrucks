@@ -21,7 +21,7 @@ function alltrucks({ allTrucks }) {
         </div>
 
         <div className={styles.listOfAllModals}>
-          {trucks.map((truck) => (
+          {trucks.map((truck) => truck.visible && (
             <Link key={truck._id} href={`/truck/${truck._id}`}>
               <a className={styles.truckModul}>
                 <Image className={styles.truckImage} src={'/tmpTruck.svg'} width={100} height={100}></Image>

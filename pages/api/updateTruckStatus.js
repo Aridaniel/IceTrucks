@@ -8,7 +8,7 @@ import Truck from '../../schemas/truck';
 
 const handler = async (req, res) => {
   if(req.method === 'POST') {
-    firebaseClient();
+    // firebaseClient();
     // const { truckId, status } = req.body;
     const { id, status} = req.body; // Send via auth header?
     const token = req.headers.authorization;

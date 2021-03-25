@@ -18,8 +18,8 @@ export default function managetrucks({session, allTrucks}) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log('Session: ', session);
-    console.log('AlTruc: ', allTrucks);
+    // console.log('Session: ', session);
+    // console.log('AlTruc: ', allTrucks);
     // const getData = async () => {
     //   const allTrucks = await getAllTrucks();
     //   setTrucks(allTrucks);
@@ -47,7 +47,7 @@ export default function managetrucks({session, allTrucks}) {
         console.log('data: ', data);
         return;        
       } else {
-        console.log('Truck visible updated id: ', id);
+        // console.log('Truck visible updated id: ', id);
         manageFormSuccess('Trucks status updated');
       }
     } catch(error) {

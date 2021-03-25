@@ -24,12 +24,7 @@ const initApp = () => {
 }
 
 export const verifyIdToken = async (token) => {
-  if(!admin.apps.length) {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://ice-truck-2d148-default-rtdb.firebaseio.com/"
-    });
-  }
+  initApp();
 
   return admin.auth().verifyIdToken(token).catch((error) => {
     throw error;
@@ -38,12 +33,7 @@ export const verifyIdToken = async (token) => {
 
 // Edit a user's custom claim admin role
 export const editUserAsAdmin = async (userId, isAdmin) => {
-  if(!admin.apps.length) {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://ice-truck-2d148-default-rtdb.firebaseio.com/"
-    });
-  }
+  initApp();
 
   return admin
   .auth()

@@ -57,7 +57,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       truckData
-    }
+    },
+    revalidate: 3
   }
 
   // Fetch necessary data for the blog post using params.id

@@ -11,6 +11,7 @@ import ManageTruckItem from '../components/ManageTruckItem';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/ManageTrucks.module.css';
+import { getStaticProps } from './alltrucks';
 
 export default function managetrucks({session, allTrucks}) {
   firebaseClient();
@@ -27,6 +28,7 @@ export default function managetrucks({session, allTrucks}) {
     // getData();
   }, []);
 
+  // Takes in truck id and new status for the visible attribute
   const updateStatus = async (id, newStatus) => {
     try {
       const idToken = await firebase.auth().currentUser.getIdToken(true);

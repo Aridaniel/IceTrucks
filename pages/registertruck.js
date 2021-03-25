@@ -160,7 +160,6 @@ function registertruck({session}) {
             </input>       
             <input 
               name='menu'
-              maxLength='10' 
               onChange={handleChange} 
               type='text' 
               placeholder='Menu'    

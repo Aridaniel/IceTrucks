@@ -11,7 +11,6 @@ import ManageTruckItem from '../components/ManageTruckItem';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/ManageTrucks.module.css';
-import { getStaticProps } from './alltrucks';
 
 export default function managetrucks({session, allTrucks}) {
   firebaseClient();

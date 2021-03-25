@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Nav from './Nav';
 import styles from '../styles/Header2.module.css';
@@ -7,6 +7,12 @@ import Link from 'next/link';
 export default function Header2({ truckin }) {
   // logic to open and close the - Modla is closed when state is = false
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [currPath, setCurrPath] = useState('');
+  
+  useEffect(() => {
+    const path = window.location.pathname;
+    setCurrPath(path)
+  }, [])
 
   /*   const [searchTruck, setSearchTruck] = useState('')
 
@@ -23,6 +29,7 @@ export default function Header2({ truckin }) {
 
         <Nav setIsOpen={setIsOpen} modalIsOpen={modalIsOpen} />
       </div>
+      {currPath === '/alltrucks' && 
       <div className={styles.inputContainer}>
         <input
           type="text"
@@ -31,6 +38,7 @@ export default function Header2({ truckin }) {
           /* onChange={handleChange} */
         />
       </div>
+      }
     </>
   );
 }

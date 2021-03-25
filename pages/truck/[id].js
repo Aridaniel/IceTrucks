@@ -17,13 +17,13 @@ export default function Truck({ truckData }) {
             <Image src="/tmpTruck.svg" width={100} height={80}></Image>
             <div className={styles.textInfoBox}>
               <h2>{truckData.name}</h2>
-              <p>Address: <div className={styles.text}> {truckData.address}</div> </p>
-              <p>Phone: <div className={styles.text}> {truckData.phone}</div></p>
-              <p>Email: <div className={styles.text}> {truckData.email}</div></p>
-              <p>Menu: <div className={styles.text}> {truckData.menu}</div></p>
-              <p>Description: <div className={styles.text}>{truckData.description}</div></p>
+              <div>Address: {' '} <div className={styles.text}> {truckData.address}</div> </div>
+              <div>Phone: {' '} <div className={styles.text}> {truckData.phone}</div></div>
+              <div>Email: {' '} <div className={styles.text}> {truckData.email}</div></div>
+              <div>Menu: {' '}  <div className={styles.text}> {truckData.menu}</div></div>
+              <div>Description: {' '} <div className={styles.text}>{truckData.description}</div></div>
               <div className={styles.truckTags}>
-                {truckData.tags.map((tag)=><div className={styles.tag}>{tag}</div>)}
+                {truckData.tags.map((tag)=><div key={tag} className={styles.tag}>{tag}</div>)}
               </div>
                 <Link href={'/'}>
                 <a className={styles.showOmMapBtn}>Show on Map</a>

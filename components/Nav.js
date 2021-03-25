@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import styles from '../styles/Nav.module.css';
 import Link from 'next/link';
 // Using react modal library
 import Modal from 'react-modal';
 // icon
-import { GrClose } from 'react-icons/gr';
+import { MdClose } from 'react-icons/md';
 
 
 Modal.setAppElement('body');
@@ -13,6 +13,12 @@ Modal.setAppElement('body');
 export default function Nav({ modalIsOpen, setIsOpen }) {
   //////////////////////////////////
   // logic to open and close the 🍔
+  const [currPath, setCurrPath] = useState('');
+  
+  useEffect(() => {
+    const path = window.location.pathname;
+    setCurrPath(path)
+  }, [])
 
   // opening the 🍔
   function openModal() {
@@ -26,7 +32,7 @@ export default function Nav({ modalIsOpen, setIsOpen }) {
   return (
     <>
       {/* 🍔 icon on the outside */}
-      <GiHamburgerMenu className={styles.burger} onClick={openModal} />
+      <GiHamburgerMenu className={styles.burger} style={currPath === '/' ? null : {color: 'white'}}  onClick={openModal} />
       {/* Modal component */}
       <Modal
         isOpen={modalIsOpen}
@@ -40,29 +46,27 @@ export default function Nav({ modalIsOpen, setIsOpen }) {
           {/* Close button */}
 
           <div className={styles.buttonContainer}>
-            <button className={styles.Button} onClick={closeModal}>
-              <GrClose onClick={closeModal} />
-            </button>
+              <MdClose className={styles.button} onClick={closeModal} />
           </div>
           <div className={styles.navText}>
             <Link href="/">
               <a>
-                <h1>Map</h1>
+                <h2>Map</h2>
               </a>
             </Link>
             <Link href="/login">
               <a>
-                <h1>Log in</h1>
+                <h2>Log in</h2>
               </a>
             </Link>
             <Link href="/alltrucks">
               <a>
-                <h1>Food Trucks</h1>
+                <h2>Food Trucks</h2>
               </a>
             </Link>
             <Link href="/registertruck">
               <a>
-                <h1>Register Food Truck</h1>
+                <h2>Register Truck</h2>
               </a>
             </Link>
           </div>
@@ -75,17 +79,13 @@ export default function Nav({ modalIsOpen, setIsOpen }) {
 // custom styles for the Modal component
 const customStyles = {
   content: {
-    top: '10%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '50%',
     width: '100%',
-    transform: 'translate(-50%, -50%)',
     border: 'none',
     color: 'white',
     backgroundColor: 'rgb(44, 44, 44)',
-    
-    
-    
   },
 };

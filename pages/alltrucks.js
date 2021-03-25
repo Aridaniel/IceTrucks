@@ -50,19 +50,11 @@ export default alltrucks;
 export async function getStaticProps() {
   let allTrucks;
   try {
-    // const response = await fetch(
-    //   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
-    //     ? 'http://localhost:3000/api/truck'
-    //     : 'https://ice-trucks.herokuapp.com/api/truck'
-    // );
-    // const data = await response.json();
-    // staticTruck = data.data;
     allTrucks = await getAllTrucks();
-
   } catch (error) {
     console.log('Error: ', error);
   }
-
+  
   return {
     props: {
       allTrucks,

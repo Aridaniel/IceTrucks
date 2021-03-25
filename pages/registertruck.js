@@ -49,7 +49,7 @@ function registertruck({session}) {
   const postTruck = async () => {
     try {
       const idToken = await firebase.auth().currentUser.getIdToken(/*Force refresh*/ true);
-      const res = await fetch((!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'http://localhost:3000/api/truck' : 'https://ice-trucks.herokuapp.com/api/truck', {
+      const res = await fetch((!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'http://localhost:3000/api/trucks' : 'https://ice-trucks.herokuapp.com/api/trucks', {
         method: 'POST',
         body: JSON.stringify({
           name: form.name,

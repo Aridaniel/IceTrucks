@@ -1,9 +1,54 @@
 .container {
+  margin-top: 1.5rem;
   color: #fff;
+  display: grid;
+  justify-content: center;
+  height: 80vh;
+}
+
+.textInfoBox {
+  margin-top: 1rem;
+  display: grid;
+  width: 80vw;
+  grid-template-rows: .7fr .6fr .6fr .6fr .6fr 1.1fr 1fr 0.7fr;
+ 
+  /* /* justify-content: center; */
+  /*  margin-left: 2.8rem; */
+}
+.textInfoBox p {
+  display: flex;
+  flex-direction: row;
+}
+
+.text {
+  color: rgb(156, 156, 156);
+}
+
+.truckTags {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.tag {
+  color: #fff;
+  background-color: rgb(91, 91, 89);
+  width: 4rem;
+  border-radius: 5px;
+  height: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .showOmMapBtn {
   background-color: rgb(200, 49, 35);
+  text-align: center;
   color: white;
-  border-radius: 5px;
+  border-radius: 7px;
+  height: 2.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

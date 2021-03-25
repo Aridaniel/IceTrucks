@@ -3,27 +3,32 @@ import { getAllTruckIds, getTruckData } from '../../lib/trucks';
 import Link from 'next/link';
 import styles from '../../styles/TruckDetails.module.css';
 import Header2 from '../../components/Header2';
+import Image from 'next/image';
 
 export default function Truck({ truckData }) {
   // console.log(truckData);
 
   return (
     <>
-      {/* <Header2/> */}
+      <Header2 />
       <div className={styles.container}>
         {truckData ? (
           <>
-            <Image src="/tmpTruck.svg" width={200} height={200}></Image>
-            <h2>{truckData.name}</h2>
-            <div>{truckData.address}</div>
-            <div>{truckData.phone}</div>
-            <div>{truckData.email}</div>
-            <div>{truckData.menu}</div>
-            <div>{truckData.description}</div>
-            <div>{truckData.tags}</div>
-            <Link href={'/alltrucks'}>
-              <a className={styles.showOmMapBtn}>Show on Map</a>
-            </Link>
+            <Image src="/tmpTruck.svg" width={100} height={80}></Image>
+            <div className={styles.textInfoBox}>
+              <h2>{truckData.name}</h2>
+              <p>Address: <div className={styles.text}> {truckData.address}</div> </p>
+              <p>Phone: <div className={styles.text}> {truckData.phone}</div></p>
+              <p>Email: <div className={styles.text}> {truckData.email}</div></p>
+              <p>Menu: <div className={styles.text}> {truckData.menu}</div></p>
+              <p>Description: <div className={styles.text}>{truckData.description}</div></p>
+              <div className={styles.truckTags}>
+                {truckData.tags.map((tag)=><div className={styles.tag}>{tag}</div>)}
+              </div>
+                <Link href={'/'}>
+                <a className={styles.showOmMapBtn}>Show on Map</a>
+                </Link>
+            </div>
           </>
         ) : (
           <div>No Info</div>

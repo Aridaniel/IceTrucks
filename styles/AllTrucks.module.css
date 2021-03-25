@@ -2,7 +2,7 @@
   background-color: rgb(44, 44, 44);
   min-height: 100vh;
 }
-.listOfAll {
+.listOfAllModals {
   margin-top: 2rem;
   display: grid;
   justify-items: center;
@@ -11,36 +11,47 @@
 .truckModul {
   background-color: rgba(91, 91, 89);
   width: 80%;
-  height: 10rem;
+  height: 9rem;
   border-radius: 6px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding:0.5rem
+}
+.truckImage{
+  
 }
 .textBox {
+  display: grid;
+  justify-content: center;
 }
 
 .truckTitle {
   color: white;
   margin-top: 1rem;
   text-align: center;
+  font-size: 20px;
 }
-.location {
+.address {
   color: white;
   width: 4rem;
+  font-size: 14px;
+  text-align: center;
 }
 .allTags {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  justify-items: center;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: .3rem;
   padding: 0.3rem;
   text-align: center;
 }
 .tag {
   color: white;
+  font-size: 10px;
   background-color: rgb(200, 49, 35);
   padding: 0.2rem;
   border-radius: 5px;
-  width: 4rem;
+  height: 1rem;
+  width: 2.8rem;
+  align-items: center;
 }

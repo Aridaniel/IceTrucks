@@ -2,25 +2,39 @@ import React from 'react';
 import { getAllTruckIds, getTruckData } from '../../lib/trucks';
 import Link from 'next/link';
 import styles from '../../styles/TruckDetails.module.css';
+import Header2 from '../../components/Header2';
+import Image from 'next/image';
 
 export default function Truck({ truckData }) {
   // console.log(truckData);
-  
+
   return (
-    <div className={styles.container}>
-      {truckData ?
-      <>
-        <h1>Truck Details</h1>
-        <div>{truckData.name}</div>
-        <div>{truckData.email}</div>
-        <div>{truckData.menu}</div>
-        <div>{truckData.phone}</div>
-        <div>{truckData.description}</div>
-        <div>{truckData.tags[0]}</div>
-        <Link href={'/alltrucks'}><a>Go Back</a></Link>
-      </>
-      : <div>No Info</div>}
-    </div>
+    <>
+      <Header2 />
+      <div className={styles.container}>
+        {truckData ? (
+          <>
+            <Image src="/tmpTruck.svg" width={100} height={80}></Image>
+            <div className={styles.textInfoBox}>
+              <h2>{truckData.name}</h2>
+              <p>Address: <div className={styles.text}> {truckData.address}</div> </p>
+              <p>Phone: <div className={styles.text}> {truckData.phone}</div></p>
+              <p>Email: <div className={styles.text}> {truckData.email}</div></p>
+              <p>Menu: <div className={styles.text}> {truckData.menu}</div></p>
+              <p>Description: <div className={styles.text}>{truckData.description}</div></p>
+              <div className={styles.truckTags}>
+                {truckData.tags.map((tag)=><div className={styles.tag}>{tag}</div>)}
+              </div>
+                <Link href={'/'}>
+                <a className={styles.showOmMapBtn}>Show on Map</a>
+                </Link>
+            </div>
+          </>
+        ) : (
+          <div>No Info</div>
+        )}
+      </div>
+    </>
   );
 }
 
@@ -28,8 +42,8 @@ export async function getStaticPaths() {
   const paths = await getAllTruckIds();
   return {
     paths: paths,
-    fallback: false
-  }
+    fallback: false,
+  };
   // Return a list of possible value for id
   // const data = await fetch(
   //   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'

@@ -1,12 +1,18 @@
 import React from 'react';
 import { getAllTruckIds, getTruckData } from '../../lib/trucks';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styles from '../../styles/TruckDetails.module.css';
 import Header2 from '../../components/Header2';
 import Image from 'next/image';
 
 export default function Truck({ truckData }) {
   // console.log(truckData);
+  const router = useRouter();
+
+  if(router.isFallback) {
+    return <div style={{color: 'white'}}>Loading...</div>
+  }
 
   return (
     <>
@@ -42,7 +48,7 @@ export async function getStaticPaths() {
   const paths = await getAllTruckIds();
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
   // Return a list of possible value for id
   // const data = await fetch(
@@ -72,7 +78,7 @@ export async function getStaticProps({ params }) {
     props: {
       truckData
     },
-    revalidate: 3
+    revalidate: 1
   }
 
   // Fetch necessary data for the blog post using params.id

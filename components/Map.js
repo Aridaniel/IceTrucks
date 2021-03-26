@@ -10,6 +10,8 @@ import TagList from '../components/TagList';
 import mapStyles from '../resources/mapStyles';
 import { set } from 'mongoose';
 const libraries = ['places'];
+import styles from '../styles/MapModal.module.css'
+import Image from 'next/image'
 // In order to allow truck owners to mark their location we need to use geolocation to use the current location of the browser OR
 // use-places-autocomplete in order to be able to select an address (possibly)
 
@@ -92,15 +94,17 @@ export default function Map({ staticTruck }) {
       {selected ? (
         // ToDo: Style the InfoWindow or maybe create our own modal
         <InfoWindow
+        
           position={{
             lat: parseFloat(selected.location.lat),
             lng: parseFloat(selected.location.lng),
           }}
           onCloseClick={() => setSelected(null)}
         >
-          <div>
-            <h2>{selected.name}</h2>
-            <p>{selected.description}</p>
+          <div className={styles.modalContainer}>
+            <Image src="/tmpTruck.svg" width={150} height={70}></Image>
+            <h2 className={styles.nameTitle}>{selected.name}</h2>
+            <p className={styles.text}>{selected.description}</p>
             {selected.tags.length ? <TagList tags={selected.tags} /> : null}
           </div>
         </InfoWindow>

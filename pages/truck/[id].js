@@ -20,14 +20,15 @@ export default function Truck({ truckData }) {
       <div className={styles.container}>
         {truckData ? (
           <>
-            <Image src="/tmpTruck.svg" width={100} height={80}></Image>
+            
+            <Image  src="/tmpTruck.svg"  style={{padding:'1rem'}}width={100} height={80}></Image>
             <div className={styles.textInfoBox}>
               <h2>{truckData.name}</h2>
-              <div>Address: {' '} <div className={styles.text}> {truckData.address}</div> </div>
-              <div>Phone: {' '} <div className={styles.text}> {truckData.phone}</div></div>
-              <div>Email: {' '} <div className={styles.text}> {truckData.email}</div></div>
-              <div>Menu: {' '}  <div className={styles.text}> {truckData.menu}</div></div>
-              <div>Description: {' '} <div className={styles.text}>{truckData.description}</div></div>
+              <div>Address: {' '} <p className={styles.text}> {truckData.address}</p> </div>
+              <div>Phone: {' '} <p className={styles.text}> {truckData.phone}</p></div>
+              <div>Email: {' '} <p className={styles.text}> {truckData.email}</p></div>
+              <div>Menu: {' '}  <p className={styles.text}> {truckData.menu}</p></div>
+              <div>Description: {' '} <p className={styles.text}>{truckData.description}</p></div>
               <div className={styles.truckTags}>
                 {truckData.tags.map((tag)=><div key={tag} className={styles.tag}>{tag}</div>)}
               </div>

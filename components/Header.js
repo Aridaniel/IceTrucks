@@ -18,12 +18,9 @@ export default function Header() {
     // if burger is closed, display flex💪 else display none✂
     <div className={!modalIsOpen ? styles.header : styles.burgerOpen}>
       <Image src={'/tmpLogo.svg'} width={24} height={24} />
-      <input
-        type="text"
-        className={styles.truckSearch}
-        placeholder={'Search...'}
-        /* onChange={handleChange} */
-      />
+      
+       <Image src={'/blacklogotruck.svg'} width={24} height={24} />
+ 
       {/* passing in logic for burger nav as prop */}
       <Nav setIsOpen={setIsOpen} modalIsOpen={modalIsOpen} />
     </div>

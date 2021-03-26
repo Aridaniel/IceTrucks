@@ -49,7 +49,7 @@ export default function Nav({ modalIsOpen, setIsOpen }) {
               <MdClose className={styles.button} onClick={closeModal} />
           </div>
           <div className={styles.navText}>
-            <Link href="/">
+            <Link onClick={closeModal} href="/">
               <a>
                 <h2>Map</h2>
               </a>

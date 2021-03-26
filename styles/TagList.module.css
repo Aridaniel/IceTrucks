@@ -2,4 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin:1rem;
+  padding:.5rem;
+  display: flex;
+  justify-content:center ;
 }

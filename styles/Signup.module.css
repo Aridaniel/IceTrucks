@@ -7,8 +7,8 @@
   justify-content: flex-start;
   color: #fff;
   background-color: #2C2C2C;
-  gap: 1.5rem;
-  padding-top: 2rem;
+/*   gap: 1.5rem;
+ */  padding-top: 2rem;
 }
 
 .container input {
@@ -25,8 +25,21 @@
   border-radius: 5px;
   border: none;
   background-color: #C83123;
+  margin-top: 1.5rem;
 }
 
 .header {
   position: relative;
+}
+
+.input{
+  margin-top: 1.5rem;
+}
+
+.text{
+  margin-top: 1rem;
+}
+
+.loginBtn{
+  margin-top: .7;
 }

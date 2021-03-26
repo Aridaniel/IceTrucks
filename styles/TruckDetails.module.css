@@ -1,27 +1,21 @@
 .container {
-  margin-top: 1.5rem;
+  margin-top: 0.4rem;
   color: #fff;
   display: grid;
   justify-content: center;
-  height: 80vh;
+  height: 85vh;
 }
 
 .textInfoBox {
   margin-top: 1rem;
   display: grid;
-  width: 80vw;
-  grid-template-rows: .7fr .6fr .6fr .6fr .6fr 1.1fr 1fr 0.7fr;
- 
-  /* /* justify-content: center; */
-  /*  margin-left: 2.8rem; */
-}
-.textInfoBox p {
-  display: flex;
-  flex-direction: row;
+
+  grid-template-rows: 0.7fr 0.6fr 0.6fr 0.6fr 0.6fr 1.1fr 1fr 0.7fr;
+
+  justify-content: center;
 }
 
 .textInfoBox div {
-
 }
 
 .truckImage {
